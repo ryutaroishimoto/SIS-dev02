@@ -1,0 +1,3 @@
+usage
+
+python exchange_nhk.py > nhk.rss
