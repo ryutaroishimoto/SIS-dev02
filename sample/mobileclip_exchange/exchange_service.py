@@ -10,10 +10,11 @@ class ExchangeService :
   @classmethod
   def set_strategy(cls, parser) :
     cls.parser = parser
+
   #initialize
   def __init__(self, uri) :
     self.uri = uri
-    self.xmldto = None
+    self.exchanged_array = None
 
   #delegate parser class
   def parse(self) :
@@ -21,9 +22,11 @@ class ExchangeService :
       parser = self.parser(self.uri)
       #XMLの中身を取得
       xml = parser.parse().exchange()
-      return xml
+      self.exchanged_array = xml
+      return self
 
   #make mobileclip rss
+  #return rss
   def to_rss(self) :
     #TODO: mock
     feed = feedgenerator.Rss201rev2Feed(
@@ -41,4 +44,8 @@ class ExchangeService :
 	     pubdate = datetime.now()
 	)
     return feed.writeString("utf-8")
-   
+
+  #永続化
+  #return t/f
+  def save(self) :
+    print "hoge"
