@@ -1,6 +1,8 @@
+#coding: utf-8
 import wsgiref.handlers
 from google.appengine.ext import webapp
 execfile("default_import.py")
+
 class General(webapp.RequestHandler):
   def get(self) :
     hoge = {"hoge": "Hoge"}
